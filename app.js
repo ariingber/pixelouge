@@ -1,19 +1,52 @@
 
-
-var computer;
-var currentPlayer = 'player 1'
-var player;
-var timer;
-var interval;
+var playersPad;
+var computersPad;
 var player1time;
-var computer2;
-var player2;
-var timer2;
-var interval;
-var player2time;
+var check = false;
+var currentPlayer = 'player 1';
+
+
+  var checkIfSolved = function () {
+    var playerCheck = [];
+    var computerCheck = [];
+    for (var i = 0; i < playersPad.length; i++){
+      var tempArray = playersPad[i];
+      for (var j = 0; j < tempArray.length; j++) {
+        playerCheck.push(tempArray[j]);
+      }
+    }
+    for (var i = 0; i < computersPad.length; i++){
+      var cTempArray = computersPad[i];
+      for (var j = 0; j < cTempArray.length; j++) {
+        computerCheck.push(cTempArray[j]);
+      }
+    }
+    for (var i=0; i < playerCheck.length; i++) {
+      if (playerCheck[i] === computerCheck[i]) {
+        check = true;
+      } else {
+        check = false; break;
+      }
+    }
+  }
+
+  var stopOrPlayerSwitch = function () {
+    if (check === true) {
+      timer.stopTimer ();
+      if (currentPlayer === 'player 1') {
+        player1time = time;
+        currentPlayer = 'player 2';
+        setPlayer2 ();
+        check = false;
+      } else {
+        player2time = time;
+        check = false;
+        showWinner ();
+      }
+    }
+  }
 
   function Timer () {
-
     this.time = 0;
     var time = 0;
     this.startTime = function () {
@@ -27,51 +60,16 @@ var player2time;
     }
   }
 
-  function Board () {
-    this.timer
-    $(".psquare").css("background-color","white")
-    this.playersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
-    ['white','white','white','white','white'],['white','white','white','white','white'],
-    ['white','white','white','white','white']];
-    this.playerTime = 0;
-    this.checkIfSolved = function () {
-      var playerCheck = [];
-      var computerCheck = [];
-      var check = false;
-      for (var i = 0; i < this.playersPad.length; i++){
-        var tempArray = this.playersPad[i];
-        for (var j = 0; j < tempArray.length; j++) {
-          playerCheck.push(tempArray[j]);
-        }
-      }
-      for (var i = 0; i < this.computersPad.length; i++){
-        var cTempArray = computer.computersPad[i];
-        for (var j = 0; j < cTempArray.length; j++) {
-          computerCheck.push(cTempArray[j]);
-        }
-      }
-      for (var i=0; i < playerCheck.length; i++) {
-        if (playerCheck[i] === computerCheck[i]) { check = true } else { return false }
-      }
-      // when player solves puzzle switch to save time and switch to 2
-      // when player 2 has solved the puzzle show who won
-      if (check === true) {
-        timer.stopTimer ()
-
-        console.log('its working lauch into finsish screen')
-        console.log(time);
-        if (currentPlayer === 'player 1') {
-          player1time = time;
-          currentPlayer = 'player 2';
-          setPlayer2 ();
-          check = false;
-        } else { console.log('player 2 finished')}
-      }
+  function PlayersPad () {
+    this.newPlayersPad = function () {
+      playersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
+      ['white','white','white','white','white'],['white','white','white','white','white'],
+      ['white','white','white','white','white']];
+      $(".psquare").css("background-color","white");
+      playersTime = 0;
     }
+
     this.playerSelectpad = function () {
-      checkIfSolved = this.checkIfSolved;
-      playersPad = this.playersPad;
-      computersPad = this.computersPad;
       $(".psquare").on('click', function(e) {
         $square = $(e.toElement);
         $sqursIdStrg = $square.attr('id');
@@ -85,12 +83,14 @@ var player2time;
           $($square).css("background-color","white");//changes back to white
         };
         checkIfSolved();
+        stopOrPlayerSwitch();
       });
+
     }
   }
 
   function CompuPad () {
-    this.computersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
+    computersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
     ['white','white','white','white','white'],['white','white','white','white','white'],
     ['white','white','white','white','white']];
     $(".csquare").css("background-color","white")
@@ -98,8 +98,8 @@ var player2time;
       var numbers = [0,1,2,4];
       var randomVal1 = numbers[Math.floor(Math.random()*numbers.length)];
       var randomVal2 = numbers[Math.floor(Math.random()*numbers.length)];
-      cSqClr = this.computersPad[randomVal1][randomVal2];
-      this.computersPad[randomVal1][randomVal2] = 'black';
+      cSqClr = computersPad[randomVal1][randomVal2];
+      computersPad[randomVal1][randomVal2] = 'black';
       $("#"+"c"+randomVal1+""+[randomVal2]).css("background-color","black");//changes appropriate square black
 
     }
@@ -110,37 +110,39 @@ var player2time;
     $(".player2start").show();
   }
 
+  function showWinner () {
+    if (player2time > player1time) {
+      console.log ('player 1 wins')
+    } else {
+      console.log ('player 2 wins')
+    }
+  }
+
+  function showPlayer2 () {
+    $(".boardsContainer").show();
+    $(".player2start").hide();
+  }
+
 
 
 $(document).ready(function() {
-    $(".player2start").hide();
-    alert("everything is ready")
-//game starts here
+  $(".player2start").hide();
+  alert("everything is ready")
   $(".player1start").on('click', function () {
-    alert('this game has begun')
     $(".player1start").hide();
     computer =  new CompuPad();
     player = new PlayersPad();
-    timer = new Timer ();
-    timer.startTime()
+    player.newPlayersPad();
     player.playerSelectpad();
-    $(".player2start").on('click', function () {
-      alert('player 2 has begun')
-      $(".player1start").hide();
-      $(".player2start").hide();
-      computer =  new CompuPad();
-      console.log(computer.computersPad)
-      player = new PlayersPad();
-      console.log(player.playersPad)
-      timer = new Timer ();
-      timer.startTime()
-      player.playerSelectpad();
-      $(".boardsContainer").show();
-
-    });
-
+    timer = new Timer();
+    timer.startTime();
   });
-
-
-
+  $(".player2start").on('click', function () {
+    computer2 =  new CompuPad();
+    player2 = new PlayersPad();
+    player2.newPlayersPad();
+    showPlayer2();
+    timer2 = new Timer();
+    timer2.startTime();
+  });
 });
