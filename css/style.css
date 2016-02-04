@@ -5,13 +5,19 @@
 .boardsContainer{
   text-align: center;
 }
-.pad {
+.playerpad {
   display: inline-block;
   height: 157px;
   width: 157px;
   margin-left: 15px;
   margin-right: 15px;
-
+}
+.computerpad {
+  display: inline-block;
+  height: 157px;
+  width: 157px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .square {
