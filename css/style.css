@@ -20,7 +20,15 @@
   margin-right: 15px;
 }
 
-.square {
+.psquare {
+  margin: -1.5px;
+  display: inline-block;
+  height: 25px;
+  border: solid black;
+  width: 25px;
+}
+
+.csquare {
   margin: -1.5px;
   display: inline-block;
   height: 25px;
