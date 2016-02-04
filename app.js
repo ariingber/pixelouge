@@ -1,5 +1,7 @@
 $(document).ready(function() {
+  $(".player2start").hide();
   alert("everything is ready")
+
 
 
   var playersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
@@ -25,14 +27,6 @@ $(document).ready(function() {
     }
   }
 
-  function resetForPlayer2 (){
-    var playersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
-    ['white','white','white','white','white'],['white','white','white','white','white'],
-    ['white','white','white','white','white']];
-    $(".square").css("background-color","white");
-    time = 0;
-  }
-
   function compuPadGenerate (){
     for (var i = 1; i <= 15; i++) {
       var numbers = [0,1,2,4];
@@ -50,16 +44,18 @@ $(document).ready(function() {
   // it should also include code for starting , stoping and saving timer data
   function playerSelectpad() {
     $($player).on('click', function(e) {
+      console.log(playersPad);
+      console.log(currentPlayer);
       $square = $(e.toElement);
       $sqursIdStrg = $square.attr('id');
-      console.log($sqursIdStrg);
+      // console.log($sqursIdStrg);
       sqrsIdStrgAr = $sqursIdStrg.split('');
-      console.log(sqrsIdStrgAr);
-      sqClr= playersPad[Number.parseInt(sqrsIdStrgAr[0])][Number.parseInt(sqrsIdStrgAr[1])];
-      console.log(sqClr);
+      // console.log(sqrsIdStrgAr);
+      sqClr = playersPad[Number.parseInt(sqrsIdStrgAr[0])][Number.parseInt(sqrsIdStrgAr[1])];
+      // console.log(sqClr);
       if (sqClr === null || sqClr === 'white') {
         playersPad[Number.parseInt(sqrsIdStrgAr[0])][Number.parseInt(sqrsIdStrgAr[1])] = 'black';
-        console.log(playersPad);
+        // console.log(playersPad);
         $($square).css("background-color","black");//changes appropriate square black
       } else {
         playersPad[Number.parseInt(sqrsIdStrgAr[0])][Number.parseInt(sqrsIdStrgAr[1])] = 'white';
@@ -69,6 +65,7 @@ $(document).ready(function() {
       //Comparing to see if player has completed puzzle
     var playerCheck = [];
     var computerCheck = [];
+    var check = false;
     for (var i = 0; i < playersPad.length; i++){
       var tempArray = playersPad[i];
       for (var j = 0; j < tempArray.length; j++) {
@@ -84,27 +81,53 @@ $(document).ready(function() {
     for (var i=0; i < playerCheck.length; i++) {
       if (playerCheck[i] === computerCheck[i]) { check = true } else { return false }
     }
+
+    // when player solves puzzle switch to save time and switch to 2
+    // when player 2 has solved the puzzle show who won
     if (check === true) {
       timer.stopTimer ()
       console.log('its working lauch into finsish screen')
       console.log(time);
-      currentPlayer = 'player 2'
+      if (currentPlayer === 'player 1') {
+        player1time = time;
+        currentPlayer = 'player 2';
+        startPlayer2();
+        //resetBoard
+      } else { console.log('player 2 finished')}
     }
     });
   };
 
+  function startPlayer2() {
+    $(".boardsContainer").hide();
+    $(".player2start").show();
+    alert('coundown to player too starts')
+    playersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
+    ['white','white','white','white','white'],['white','white','white','white','white'],
+    ['white','white','white','white','white']];
+    computersPad = [['white','white','white','white','white'],['white','white','white','white','white'],
+    ['white','white','white','white','white'],['white','white','white','white','white'],
+    ['white','white','white','white','white']];
+  }
+
 //game starts here
   $($button).on('click', function (){
     alert('this game has begun')
-    $($button).hide();
+    $(".player1start").hide();
     compuPadGenerate ();
     playerSelectpad();
     timer = new Timer();
-    player1time = time;
-    if (currentPlayer === 'player 2' )
-    resetForPlayer2();
-    //enter player 2
-    //variables reset
+    $(".player2start").on ('click', function () {
+      alert('trying to start player 2')
+      $(".player2start").hide();
+      $(".boardsContainer").show();
+      $('.square').css("background-color","white");
+      compuPadGenerate ();
+      playerSelectpad();
+    })
+
+    // startPlayer2();
+
   });
 
 
