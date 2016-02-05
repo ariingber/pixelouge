@@ -106,15 +106,18 @@ var currentPlayer = 'player 1';
   }
 
   function setPlayer2 () {
-    $(".boardsContainer").hide();
+    $(".csquare").css("background-color", "white");
+    $(".psquare").css("background-color","white");
+    $(".csquare").show();
+    $("#currentPlayer").text("player two");
     $(".player2start").show();
   }
 
   function showWinner () {
     if (player2time > player1time) {
-      console.log ('player 1 wins')
+      $('p').text('PLAYER ONE WINS');
     } else {
-      console.log ('player 2 wins')
+      $('p').text('PLAYER TWO WINS');
     }
   }
 
@@ -127,8 +130,10 @@ var currentPlayer = 'player 1';
 
 $(document).ready(function() {
   $(".player2start").hide();
-  alert("everything is ready")
   $(".player1start").on('click', function () {
+    setTimeout (function() {
+      $('.csquare').hide();
+    }, 7000);
     $(".player1start").hide();
     computer =  new CompuPad();
     player = new PlayersPad();
@@ -138,6 +143,9 @@ $(document).ready(function() {
     timer.startTime();
   });
   $(".player2start").on('click', function () {
+    setTimeout (function() {
+      $('.csquare').hide();
+    }, 7000);
     computer2 =  new CompuPad();
     player2 = new PlayersPad();
     player2.newPlayersPad();
