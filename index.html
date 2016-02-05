@@ -1,71 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <meta charset="utf-8">
-    <title>Pixelouge</title>
+    <title>Pixelogue</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
   </head>
   <body>
     <div>
-      <h1 class="title">Title</h1>
+      <h1 class="title">pixelogue</h1>
+    </div>
+    <div id="timer">
+      <i id="plyr1">player one</i>
+      <i class="fa fa-clock-o"></i>
+      <i id="plyr2">player two</i>
     </div>
     <div class= "boardsContainer">
-      <div class="pad player">
-        <div class="square" id="40"></div>
-        <div class="square" id="41"></div>
-        <div class="square" id="42"></div>
-        <div class="square" id="43"></div>
-        <div class="square" id="44"></div>
-        <div class="square" id="30"></div>
-        <div class="square" id="31"></div>
-        <div class="square" id="32"></div>
-        <div class="square" id="33"></div>
-        <div class="square" id="34"></div>
-        <div class="square" id="20"></div>
-        <div class="square" id="21"></div>
-        <div class="square" id="22"></div>
-        <div class="square" id="23"></div>
-        <div class="square" id="24"></div>
-        <div class="square" id="10"></div>
-        <div class="square" id="11"></div>
-        <div class="square" id="12"></div>
-        <div class="square" id="13"></div>
-        <div class="square" id="14"></div>
-        <div class="square" id="00"></div>
-        <div class="square" id="01"></div>
-        <div class="square" id="02"></div>
-        <div class="square" id="03"></div>
-        <div class="square" id="04"></div>
+      <div class="playerpad">
+        <div class="psquare" id="40"></div>
+        <div class="psquare" id="41"></div>
+        <div class="psquare" id="42"></div>
+        <div class="psquare" id="43"></div>
+        <div class="psquare" id="44"></div>
+        <div class="psquare" id="30"></div>
+        <div class="psquare" id="31"></div>
+        <div class="psquare" id="32"></div>
+        <div class="psquare" id="33"></div>
+        <div class="psquare" id="34"></div>
+        <div class="psquare" id="20"></div>
+        <div class="psquare" id="21"></div>
+        <div class="psquare" id="22"></div>
+        <div class="psquare" id="23"></div>
+        <div class="psquare" id="24"></div>
+        <div class="psquare" id="10"></div>
+        <div class="psquare" id="11"></div>
+        <div class="psquare" id="12"></div>
+        <div class="psquare" id="13"></div>
+        <div class="psquare" id="14"></div>
+        <div class="psquare" id="00"></div>
+        <div class="psquare" id="01"></div>
+        <div class="psquare" id="02"></div>
+        <div class="psquare" id="03"></div>
+        <div class="psquare" id="04"></div>
       </div>
-      <div class="pad computer">
-        <div class="square" id="40"></div>
-        <div class="square" id="41"></div>
-        <div class="square" id="42"></div>
-        <div class="square" id="43"></div>
-        <div class="square" id="44"></div>
-        <div class="square" id="30"></div>
-        <div class="square" id="31"></div>
-        <div class="square" id="32"></div>
-        <div class="square" id="33"></div>
-        <div class="square" id="34"></div>
-        <div class="square" id="20"></div>
-        <div class="square" id="21"></div>
-        <div class="square" id="22"></div>
-        <div class="square" id="23"></div>
-        <div class="square" id="24"></div>
-        <div class="square" id="10"></div>
-        <div class="square" id="11"></div>
-        <div class="square" id="12"></div>
-        <div class="square" id="13"></div>
-        <div class="square" id="14"></div>
-        <div class="square" id="00"></div>
-        <div class="square" id="01"></div>
-        <div class="square" id="02"></div>
-        <div class="square" id="03"></div>
-        <div class="square" id="04"></div>
+      <div class="computerpad">
+        <div class="csquare" id="c40"></div>
+        <div class="csquare" id="c41"></div>
+        <div class="csquare" id="c42"></div>
+        <div class="csquare" id="c43"></div>
+        <div class="csquare" id="c44"></div>
+        <div class="csquare" id="c30"></div>
+        <div class="csquare" id="c31"></div>
+        <div class="csquare" id="c32"></div>
+        <div class="csquare" id="c33"></div>
+        <div class="csquare" id="c34"></div>
+        <div class="csquare" id="c20"></div>
+        <div class="csquare" id="c21"></div>
+        <div class="csquare" id="c22"></div>
+        <div class="csquare" id="c23"></div>
+        <div class="csquare" id="c24"></div>
+        <div class="csquare" id="c10"></div>
+        <div class="csquare" id="c11"></div>
+        <div class="csquare" id="c12"></div>
+        <div class="csquare" id="c13"></div>
+        <div class="csquare" id="c14"></div>
+        <div class="csquare" id="c00"></div>
+        <div class="csquare" id="c01"></div>
+        <div class="csquare" id="c02"></div>
+        <div class="csquare" id="c03"></div>
+        <div class="csquare" id="c04"></div>
       </div>
     </div>
     <div = id="startGame">
-      <button>Start Game</button>
+      <button class="player1start"><i class="fa fa-play"></i></button>
+      <button class="player2start"><i class="fa fa-play"></i></button>
+      <div id="currentPlayer">player one</div>
     </div>
   </body>
   <link rel="stylesheet" href="css/style.css">
