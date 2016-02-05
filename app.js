@@ -2,6 +2,7 @@
 var playersPad;
 var computersPad;
 var player1time;
+var player2time;
 var check = false;
 var currentPlayer = 'player 1';
 
@@ -50,11 +51,18 @@ var currentPlayer = 'player 1';
     this.time = 0;
     var time = 0;
     this.startTime = function () {
+      if (currentPlayer === 'player 1') {
         interval = setInterval ( function () {
         time = time += 1;
-        $("#timer").text(time + " seconds");
+        $("#plyr1").text(time + " seconds");
         this.time = time; }, 1000);
-      }
+      } else {
+        interval = setInterval ( function () {
+          time = time += 1;
+          $("#plyr2").text(time + " seconds");
+          this.time = time; }, 1000);
+        }
+    }
     this.stopTimer = function() {
       clearInterval (interval);
     }
@@ -109,15 +117,17 @@ var currentPlayer = 'player 1';
     $(".csquare").css("background-color", "white");
     $(".psquare").css("background-color","white");
     $(".csquare").show();
-    $("#currentPlayer").text("player two");
+    // $("#currentPlayer").text("player two");
     $(".player2start").show();
   }
 
   function showWinner () {
     if (player2time > player1time) {
-      $('p').text('PLAYER ONE WINS');
+      $('#finalMessage').text('PLAYER ONE WINS');
+    } else if (player1time > player2time){
+      $('#finalMessage').text('PLAYER TWO WINS');
     } else {
-      $('p').text('PLAYER TWO WINS');
+      $('#finalMessage').text('ITS A TIE');
     }
   }
 

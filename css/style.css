@@ -69,13 +69,26 @@ p{
 }
 
 #timer {
+  text-align: center;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   display: block;
+  margin-bottom: 15px;
 }
 
 #currentPlayer{
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 15px;
+  position: relative;
+  left: 302px;
+  bottom: 5px;
+}
+#computerLabel {
+  position: relative;
+  left: 476px;
+  bottom: 5px;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+
+#finalMessage {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+
 }
