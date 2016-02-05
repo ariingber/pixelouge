@@ -67,16 +67,18 @@ p{
   font-size: 25px;
 }
 
+.plyrTimes {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
 #plyr1 {
-  display: inline;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   font-size: 25px;
-  margin-right: 20px;
 }
 #plyr2 {
-  display: inline;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   font-size: 25px;
-  margin-left: 20px;
-
 }
 
 .fa-clock-o {
@@ -88,19 +90,19 @@ p{
 .fa-keyboard-o {
   margin-left: 5px;
 }
-
-#timer {
-  text-align: center;
-  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  display: block;
-  margin-bottom: 15px;
+#man {
+  position: relative;
+  right: 107.5px;
+  display: inline;
+}
+#machine {
+  position: relative;
+  left: 120px;
+  display: inline;
 }
 
-#plyrComputerIcons {
-  margin-top: -26px;
-}
 
 #finalMessage {
-  margin-top: 15px;
+  margin-top: 20px;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 }
