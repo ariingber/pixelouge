@@ -2,6 +2,7 @@
 var playersPad;
 var computersPad;
 var player1time;
+var player2time;
 var check = false;
 var currentPlayer = 'player 1';
 
@@ -50,11 +51,18 @@ var currentPlayer = 'player 1';
     this.time = 0;
     var time = 0;
     this.startTime = function () {
+      if (currentPlayer === 'player 1') {
         interval = setInterval ( function () {
         time = time += 1;
-        $("#timer").text(time + " seconds");
+        $("#plyr1").text(time + " seconds");
         this.time = time; }, 1000);
-      }
+      } else {
+        interval = setInterval ( function () {
+          time = time += 1;
+          $("#plyr2").text(time + " seconds");
+          this.time = time; }, 1000);
+        }
+    }
     this.stopTimer = function() {
       clearInterval (interval);
     }
@@ -109,15 +117,20 @@ var currentPlayer = 'player 1';
     $(".csquare").css("background-color", "white");
     $(".psquare").css("background-color","white");
     $(".csquare").show();
-    $("#currentPlayer").text("player two");
+    // $("#currentPlayer").text("player two");
     $(".player2start").show();
   }
 
   function showWinner () {
     if (player2time > player1time) {
-      $('p').text('PLAYER ONE WINS');
+      $('#finalMessage').text('PLAYER ONE WINS');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500);
+    } else if (player1time > player2time){
+      $('#finalMessage').text('PLAYER TWO WINS');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500)
     } else {
-      $('p').text('PLAYER TWO WINS');
+      $('#finalMessage').text('ITS A TIE');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500)
     }
   }
 
@@ -125,10 +138,15 @@ var currentPlayer = 'player 1';
     $(".boardsContainer").show();
     $(".player2start").hide();
   }
-
-
+  function openingAnimation () {
+    $("h1").animate({fontSize: "7em"}, 1500);
+    $(".psquare").animate({backgroundColor: 'red'}, 1500);
+    $(".csquare").animate({backgroundColor: 'red'}, 1600);
+  }
 
 $(document).ready(function() {
+  openingAnimation ();
+
   $(".player2start").hide();
   $(".player1start").on('click', function () {
     setTimeout (function() {
