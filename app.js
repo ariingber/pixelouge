@@ -124,10 +124,13 @@ var currentPlayer = 'player 1';
   function showWinner () {
     if (player2time > player1time) {
       $('#finalMessage').text('PLAYER ONE WINS');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500)
     } else if (player1time > player2time){
       $('#finalMessage').text('PLAYER TWO WINS');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500)
     } else {
       $('#finalMessage').text('ITS A TIE');
+      $('#finalMessage').animate({fontSize: "3em"}, 1500)
     }
   }
 
@@ -135,10 +138,13 @@ var currentPlayer = 'player 1';
     $(".boardsContainer").show();
     $(".player2start").hide();
   }
-
-
+  function openingAnimation () {
+    $("h1").animate({fontSize: "3em"}, 1500)
+  }
 
 $(document).ready(function() {
+  openingAnimation ();
+
   $(".player2start").hide();
   $(".player1start").on('click', function () {
     setTimeout (function() {

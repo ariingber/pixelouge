@@ -67,6 +67,12 @@ p{
 .fa-clock-o {
   display: inline;
 }
+.fa-male {
+  margin-right: 5px;
+}
+.fa-keyboard-o {
+  margin-left: 5px;
+}
 
 #timer {
   text-align: center;
@@ -75,17 +81,8 @@ p{
   margin-bottom: 15px;
 }
 
-#currentPlayer{
-  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  position: relative;
-  left: 302px;
-  bottom: 5px;
-}
-#computerLabel {
-  position: relative;
-  left: 476px;
-  bottom: 5px;
-  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+#plyrComputerIcons {
+  margin-top: -26px;
 }
 
 #finalMessage {
