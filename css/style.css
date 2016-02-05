@@ -1,7 +1,18 @@
+<<<<<<< HEAD
+=======
+
+.outmostContainer {
+  text-align: center;
+  height: 1000px;
+  width: 800px;
+}
+>>>>>>> master
 .title {
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 90px;
   text-align: center;
   margin-bottom: 0px;
+  margin-top: 25px;
 }
 .boardsContainer{
   margin-top: 0px;
@@ -9,33 +20,33 @@
 }
 .playerpad {
   display: inline-block;
-  height: 157px;
-  width: 157px;
-  margin-left: 15px;
-  margin-right: 15px;
+  height: 200px;
+  width: 200px;
+  /*margin-left: 15px;*/
+  margin-right: 35px;
 }
 .computerpad {
   display: inline-block;
-  height: 157px;
-  width: 157px;
-  margin-left: 15px;
-  margin-right: 15px;
+  height: 200px;
+  width: 200px;
+  margin-left: 35px;
+  /*margin-right: 15px;*/
 }
 
 .psquare {
   margin: -1.5px;
   display: inline-block;
-  height: 25px;
+  height: 32px;
   border: solid black;
-  width: 25px;
+  width: 32px;
 }
 
 .csquare {
   margin: -1.5px;
   display: inline-block;
-  height: 25px;
+  height: 32px;
   border: solid black;
-  width: 25px;
+  width: 32px;
 }
 
 #startGame {
@@ -59,22 +70,42 @@ p{
   font-size: 25px;
 }
 
-.plyr1 {
-  display: inline;
+.plyrTimes {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+#plyr1 {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 25px;
+}
+#plyr2 {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 25px;
 }
 
 .fa-clock-o {
+  font-size: 40px;
+}
+.fa-male {
+  margin-right: 5px;
+}
+.fa-keyboard-o {
+  margin-left: 5px;
+}
+#man {
+  position: relative;
+  right: 107.5px;
+  display: inline;
+}
+#machine {
+  position: relative;
+  left: 120px;
   display: inline;
 }
 
-#timer {
-  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  display: block;
-}
 
-#currentPlayer{
+#finalMessage {
+  margin-top: 20px;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 15px;
 }
