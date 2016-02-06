@@ -114,11 +114,15 @@ var currentPlayer = 'player 1';
   }
 
   function setPlayer2 () {
-    $(".csquare").css("background-color", "white");
-    $(".psquare").css("background-color","white");
+    $(".csquare").css("background-color", "red");
+    $(".psquare").css("background-color","red");
     $(".csquare").show();
-    // $("#currentPlayer").text("player two");
     $(".player2start").show();
+    $(".surrender").hide()
+    $("#plyr1").animate({color: 'black'}, 750);
+    $("#plyr1").animate({fontSize: '1em'}, 1500);
+    $("#plyr2").animate({color: 'green'}, 750);
+    $("#plyr2").animate({fontSize: '2em'}, 1500);
   }
 
   function showWinner () {
@@ -142,33 +146,51 @@ var currentPlayer = 'player 1';
     $("h1").animate({fontSize: "7em"}, 1500);
     $(".psquare").animate({backgroundColor: 'red'}, 1500);
     $(".csquare").animate({backgroundColor: 'red'}, 1600);
+    $("#plyr1").animate({color: 'green'}, 750);
+    $("#plyr1").animate({fontSize: '2em'}, 1500);
+    $("#plyr2").animate({fontSize: '0'}, 1500);
   }
 
 $(document).ready(function() {
+  $(".surrender").hide()
   openingAnimation ();
-
   $(".player2start").hide();
   $(".player1start").on('click', function () {
     setTimeout (function() {
-      $('.csquare').hide();
-    }, 7000);
+      $('.csquare').animate({backgroundColor: 'red'}, 1500);
+    }, 4000);
     $(".player1start").hide();
+    $(".surrender").show();
     computer =  new CompuPad();
     player = new PlayersPad();
     player.newPlayersPad();
     player.playerSelectpad();
     timer = new Timer();
     timer.startTime();
+    $(".surrender").on('click', function () {
+      timer.stopTimer();
+      player1time = 2;
+      player2time = 1;
+      showWinner();
+    });
   });
   $(".player2start").on('click', function () {
     setTimeout (function() {
-      $('.csquare').hide();
-    }, 7000);
+      $('.csquare').animate({backgroundColor: 'red'}, 1500);
+    }, 4000);
+    $(".player2start").hide();
+    $(".surrender").show();
     computer2 =  new CompuPad();
     player2 = new PlayersPad();
     player2.newPlayersPad();
     showPlayer2();
     timer2 = new Timer();
     timer2.startTime();
+    $(".surrender").on('click', function () {
+      timer2.stopTimer();
+      player1time = 1;
+      player2time = 2;
+      showWinner();
+    });
   });
 });
