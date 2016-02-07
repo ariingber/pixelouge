@@ -133,3 +133,7 @@ p{
   margin-top: 0px;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 }
+.anotherRound {
+  width: 20px;
+  height: 20px;
+}

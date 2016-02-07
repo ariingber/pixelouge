@@ -18,6 +18,9 @@ var $csquare = $( '.csquare' );
 var $psquare = $( '.psquare');
 var $plyr1 = $( '#plyr1' );
 var $plyr2 = $( '#plyr2' );
+var $man = $( '#man' );
+var $machine = $( '#machine' );
+var $anotherRound = $( '.anotherRound' );
 
   var checkIfSolved = function () {
     var playerCheck = [];
@@ -46,6 +49,16 @@ var $plyr2 = $( '#plyr2' );
 
   var endGameOrPlayerSwitch = function () {
     if ( check === true ) {
+      $psquare.animate( { backgroundColor: 'orange' }, 200);
+      $csquare.animate( { backgroundColor: 'orange' }, 200);
+      $psquare.animate( { backgroundColor: 'pink' }, 200);
+      $csquare.animate( { backgroundColor: 'pink' }, 200);
+      $psquare.animate( { backgroundColor: 'yellow' }, 200);
+      $csquare.animate( { backgroundColor: 'yellow' }, 200);
+      $psquare.animate( { backgroundColor: 'green' }, 200);
+      $csquare.animate( { backgroundColor: 'green' }, 200);
+      $psquare.animate( { backgroundColor: 'blue' }, 200);
+      $csquare.animate( { backgroundColor: 'blue' }, 200);
       timer.stopTimer ();
       if ( currentPlayer === 'player 1') {
         player1time = time;
@@ -164,6 +177,10 @@ var $plyr2 = $( '#plyr2' );
       ties ++;
     }
     games ++
+    $surrender.hide();
+    $anotherRound.show();
+    $man.hide();
+    $machine.hide();
   }
 
   function showPlayer2 () {
@@ -172,6 +189,9 @@ var $plyr2 = $( '#plyr2' );
   }
 
   function openingAnimation () {
+    $man.show();
+    $machine.show();
+    $anotherRound.hide();
     $surrender.hide();
     $player2start.hide();
     $( 'h1' ).animate( { fontSize: '7em' }, 1500);
@@ -218,6 +238,7 @@ var $plyr2 = $( '#plyr2' );
       timer2 = new Timer();
       timer2.startTime();
       $surrender.on('click', function () {
+        
         timer2.stopTimer();
         player1time = 1;
         player2time = 2;
