@@ -223,7 +223,7 @@ var $anotherRound = $( '.anotherRound' );
       $csquare.animate( { backgroundColor: 'black' }, 5000);
       timer.stopTimer();
       player1time = 2;
-      player2time = 1;
+      player2time = 1; 
       showWinner();
     });
   }
