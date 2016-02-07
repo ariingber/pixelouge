@@ -134,6 +134,7 @@ p{
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 }
 .anotherRound {
+  color: red;
   width: 20px;
   height: 20px;
 }
