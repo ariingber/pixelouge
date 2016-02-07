@@ -6,24 +6,6 @@
   width: 800px;
 }
 
-<<<<<<< HEAD
-=======
-.info {
-  margin-top: 25px;
-  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
-  font-size: 30px;
-  text-align: left;
-  width: 700px;
-  height: 300px;
-}
-.infoTitle {
-  margin-top: -40px;
-}
-.returnToGame {
-  color: red;
-}
-
->>>>>>> master
 .title {
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   font-size: 90px;
