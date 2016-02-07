@@ -18,6 +18,9 @@ var $csquare = $( '.csquare' );
 var $psquare = $( '.psquare');
 var $plyr1 = $( '#plyr1' );
 var $plyr2 = $( '#plyr2' );
+var $man = $( '#man' );
+var $machine = $( '#machine' );
+var $anotherRound = $( '.anotherRound' );
 
   var checkIfSolved = function () {
     var playerCheck = [];
@@ -46,6 +49,18 @@ var $plyr2 = $( '#plyr2' );
 
   var endGameOrPlayerSwitch = function () {
     if ( check === true ) {
+      $psquare.animate( { backgroundColor: 'orange' }, 200);
+      $csquare.animate( { backgroundColor: 'orange' }, 200);
+      $psquare.animate( { backgroundColor: 'pink' }, 200);
+      $csquare.animate( { backgroundColor: 'pink' }, 200);
+      $psquare.animate( { backgroundColor: 'yellow' }, 200);
+      $csquare.animate( { backgroundColor: 'yellow' }, 200);
+      $psquare.animate( { backgroundColor: 'green' }, 200);
+      $csquare.animate( { backgroundColor: 'green' }, 200);
+      $psquare.animate( { backgroundColor: 'blue' }, 200);
+      $csquare.animate( { backgroundColor: 'blue' }, 200);
+      $psquare.animate( { backgroundColor: 'red' }, 1500);
+      $csquare.animate( { backgroundColor: 'red' }, 1600);
       timer.stopTimer ();
       if ( currentPlayer === 'player 1') {
         player1time = time;
@@ -164,6 +179,10 @@ var $plyr2 = $( '#plyr2' );
       ties ++;
     }
     games ++
+    $surrender.hide();
+    $anotherRound.show();
+    $man.hide();
+    $machine.hide();
   }
 
   function showPlayer2 () {
@@ -172,14 +191,61 @@ var $plyr2 = $( '#plyr2' );
   }
 
   function openingAnimation () {
+    $man.show();
+    $machine.show();
+    $anotherRound.hide();
     $surrender.hide();
     $player2start.hide();
     $( 'h1' ).animate( { fontSize: '7em' }, 1500);
+    $psquare.animate( { backgroundColor: 'orange' }, 400);
+    $csquare.animate( { backgroundColor: 'orange' }, 400);
+    $psquare.animate( { backgroundColor: 'pink' }, 600);
+    $csquare.animate( { backgroundColor: 'pink' }, 600);
     $psquare.animate( { backgroundColor: 'red' }, 1500);
     $csquare.animate( { backgroundColor: 'red' }, 1600);
     $plyr1.animate( { color: 'green' }, 750);
     $plyr1.animate( { fontSize: '2em' }, 1500);
     $plyr2.animate( { fontSize: '0' }, 1500);
+  }
+
+  function player1Surrender () {
+    $surrender.on('click', function () {
+      $psquare.animate( { backgroundColor: 'black' }, 1500);
+      for ( var i = 0; i < 5; i++ ) {
+        for ( var j = 0; j < 5; j++ ) {
+          if ( computersPad[i][j] === 'white' ) {
+            $('#' + 'c' + i + '' + j ).css('background-color', 'white');
+          } else {
+            $('#' + 'c' + i + '' + j ).css('background-color', 'black');
+          }
+        }
+      }
+      $csquare.animate( { backgroundColor: 'black' }, 5000);
+      timer.stopTimer();
+      player1time = 2;
+      player2time = 1;
+      showWinner();
+    });
+  }
+
+  function player2Surrender () {
+    $surrender.on('click', function () {
+      $psquare.animate( { backgroundColor: 'black' }, 1500);
+      for ( var i = 0; i < 5; i++ ) {
+        for ( var j = 0; j < 5; j++ ) {
+          if ( computersPad[i][j] === 'white' ) {
+            $('#' + 'c' + i + '' + j ).css('background-color', 'white');
+          } else {
+            $('#' + 'c' + i + '' + j ).css('background-color', 'black');
+          }
+        }
+      }
+      $csquare.animate( { backgroundColor: 'black' }, 5000);
+      timer2.stopTimer();
+      player1time = 1;
+      player2time = 2;
+      showWinner();
+    });
   }
 
   function player1GamePlay () {
@@ -195,19 +261,14 @@ var $plyr2 = $( '#plyr2' );
       player.playerSelectpad();
       timer = new Timer();
       timer.startTime();
-      $surrender.on('click', function () {
-        timer.stopTimer();
-        player1time = 2;
-        player2time = 1;
-        showWinner();
-      });
+      player1Surrender();
     });
   }
 
   function player2GamePlay () {
     $player2start.on('click', function () {
       setTimeout (function() {
-        $csquare.animate({backgroundColor: 'red'}, 1500);
+        $csquare.animate( { backgroundColor: 'red' }, 1500 );
       }, 4000);
       $player2start.hide();
       $surrender.show();
@@ -217,17 +278,40 @@ var $plyr2 = $( '#plyr2' );
       showPlayer2();
       timer2 = new Timer();
       timer2.startTime();
-      $surrender.on('click', function () {
-        timer2.stopTimer();
-        player1time = 1;
-        player2time = 2;
-        showWinner();
-      });
+      player2surrender();
     });
   }
+
+  function addWinsToWinnerBoard () {
+
+  }
+  // function playAnotherRound () {
+  //   $anotherRound.on( 'click', function (){
+  //     player1time = 0;
+  //     player2time = 0;
+  //     check = false;
+  //     currentPlayer = 'player 1';
+  //     player;
+  //     computer;
+  //     timer;
+  //     player2;
+  //     computer2;
+  //     timer2;
+  //     $anotherRound.hide();
+  //     $finalMessage.hide();
+  //     $man.text('');
+  //     $machine.text('');
+  //     $plyr1.text('player one');
+  //     $plyr2.text('player two');
+  //     $plyr1.animate( { fontSize: '3em' }, 1500);
+  //     $player1start.show();
+  //     openingAnimation ();
+  //   });
+  // }
 
 $(document).ready(function() {
   openingAnimation ();
   player1GamePlay ();
   player2GamePlay ();
+
 });

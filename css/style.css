@@ -4,12 +4,33 @@
   height: 1000px;
   width: 800px;
 }
+
+.info {
+  margin-top: 25px;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: left;
+  width: 700px;
+  height: 300px;
+}
+.infoTitle {
+  margin-top: -40px;
+}
+.returnToGame {
+  color: red;
+}
+
 .title {
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   font-size: 90px;
   text-align: center;
   margin-bottom: 0px;
   margin-top: 25px;
+}
+
+.fa-info-circle {
+  background-color: white;
+  color: black;
 }
 .boardsContainer{
   margin-top: 0px;
@@ -111,4 +132,9 @@ p{
 #finalMessage {
   margin-top: 0px;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+.anotherRound {
+  color: red;
+  width: 20px;
+  height: 20px;
 }
