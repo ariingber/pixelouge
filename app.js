@@ -44,7 +44,7 @@ var $plyr2 = $( '#plyr2' );
     }
   }
 
-  var stopOrPlayerSwitch = function () {
+  var endGameOrPlayerSwitch = function () {
     if ( check === true ) {
       timer.stopTimer ();
       if ( currentPlayer === 'player 1') {
@@ -112,7 +112,7 @@ var $plyr2 = $( '#plyr2' );
           //changes back to white
         };
         checkIfSolved();
-        stopOrPlayerSwitch();
+        endGameOrPlayerSwitch();
       });
 
     }
@@ -154,13 +154,13 @@ var $plyr2 = $( '#plyr2' );
       $finalMessage.text('PLAYER ONE WINS');
       $finalMessage.animate({fontSize: '3em'}, 1500);
       player1wins ++;
-    } else if (player1time > player2time){
+    } else if ( player1time > player2time ){
       $finalMessage.text('PLAYER TWO WINS');
-      $finalMessage.animate({fontSize: '3em'}, 1500);
+      $finalMessage.animate( { fontSize: '3em' }, 1500);
       player2wins ++;
     } else {
-      $finalMessage.text('ITS A TIE');
-      $finalMessage.animate({fontSize: '3em'}, 1500);
+      $finalMessage.text( 'ITS A TIE' );
+      $finalMessage.animate( { fontSize: '3em' }, 1500);
       ties ++;
     }
     games ++
