@@ -84,25 +84,31 @@ p{
 .fa-clock-o {
   font-size: 40px;
 }
-.fa-male {
-  margin-right: 5px;
-}
-.fa-keyboard-o {
-  margin-left: 5px;
-}
-#man {
+
+.surrender {
   position: relative;
-  right: 107.5px;
+  right: 30px;
+  font-size: 15px;
+}
+
+
+#man {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  position: relative;
+  right: 103px;
   display: inline;
+  bottom: 35px;
 }
 #machine {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
   position: relative;
-  left: 120px;
+  left: 110px;
   display: inline;
+  bottom: 35px;
 }
 
 
 #finalMessage {
-  margin-top: 20px;
+  margin-top: 0px;
   font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 }
